@@ -25,7 +25,6 @@ def ready():
 
 @app.post("/predict")
 def predict(request: PredictionRequest):
-    # Placeholder deterministic inference for platform demonstration.
     prediction = 1 if sum(request.features) >= 0 else 0
     return {
         "prediction": prediction,
