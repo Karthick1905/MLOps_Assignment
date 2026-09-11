@@ -6,7 +6,7 @@ client = TestClient(app)
 def test_root():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json()["message"] == "Hello World from ML API"
+    assert response.json()["message"] == "Hello World"
 
 def test_health():
     response = client.get("/health")
