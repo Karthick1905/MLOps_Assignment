@@ -1,0 +1,11 @@
+1. Check the deployed pods:
+
+  kubectl get pods -n {{ .Release.Namespace }}
+
+2. Port-forward the service:
+
+  kubectl port-forward svc/{{ include "ml-api.fullname" . }} 8000:{{ .Values.service.port }} -n {{ .Release.Namespace }}
+
+3. Test:
+
+  curl http://localhost:8000/health

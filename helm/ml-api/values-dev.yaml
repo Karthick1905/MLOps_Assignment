@@ -1,0 +1,30 @@
+replicaCount: 1
+
+image:
+  repository: ml-api
+  tag: local
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 8000
+  nodePort: 30080
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 250m
+    memory: 256Mi
+
+autoscaling:
+  enabled: false
+
+pdb:
+  enabled: false
+
+config:
+  LOG_LEVEL: DEBUG
+  MODEL_NAME: sample-model-dev

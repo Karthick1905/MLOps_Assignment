@@ -1,0 +1,33 @@
+replicaCount: 2
+
+image:
+  repository: example.dkr.ecr.region.amazonaws.com/ml-api
+  tag: staging
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8000
+
+resources:
+  requests:
+    cpu: 150m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 70
+
+pdb:
+  enabled: true
+  minAvailable: 1
+
+config:
+  LOG_LEVEL: INFO
+  MODEL_NAME: sample-model-staging
