@@ -13,7 +13,7 @@ class PredictionRequest(BaseModel):
 
 @app.get("/")
 def root():
-    return {"message": "Hello World from ML API"}
+    return {"message": "Hello World"}
 
 @app.get("/health")
 def health():
